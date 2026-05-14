@@ -1,3 +1,9 @@
+---
+next:
+  text: Default Shell
+  link: /book/default_shell.md
+---
+
 # Installer Nu
 
 Il existe de nombreuses façons de démarrer avec Nu. Vous pouvez télécharger des binaires précompilés depuis notre [page de release](https://github.com/nushell/nushell/releases), [utiliser votre gestionnaire de paquets préféré](https://repology.org/project/nushell/versions), ou compiler à partir des sources.
@@ -5,6 +11,8 @@ Il existe de nombreuses façons de démarrer avec Nu. Vous pouvez télécharger 
 Le binaire principal de Nushell est nommé `nu` (ou `nu.exe` sous Windows). Après installation, vous pouvez le lancer en tapant `nu`.
 
 @[code](@snippets/installation/run_nu.sh)
+
+[[toc]]
 
 ## Binaires précompilés
 
@@ -20,12 +28,72 @@ Pour macOS et Linux, [Homebrew](https://brew.sh/) est un choix populaire (`brew 
 
 Pour Windows :
 
-- [Winget](https://docs.microsoft.com/fr-fr/windows/package-manager/winget/) (`winget install nushell`)
+- [Winget](https://docs.microsoft.com/fr-fr/windows/package-manager/winget/)
+
+  - Installation avec portée machine : `winget install nushell --scope machine`
+  - Mise à jour avec portée machine : `winget update nushell`
+  - Installation avec portée utilisateur : `winget install nushell` ou `winget install nushell --scope user`
+  - Mise à jour avec portée utilisateur : En raison du [problème winget-cli #3011](https://github.com/microsoft/winget-cli/issues/3011), exécuter `winget update nushell` installera inopinément la dernière version dans `C:\Program Files\nu`. Pour contourner cela, relancez `winget install nushell` pour installer la dernière version dans la portée utilisateur.
+
 - [Scoop](https://scoop.sh/) (`scoop install nu`)
+
+Pour Debian et Ubuntu :
+
+```sh
+wget -qO- https://apt.fury.io/nushell/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/fury-nushell.gpg
+echo "deb [signed-by=/etc/apt/keyrings/fury-nushell.gpg] https://apt.fury.io/nushell/ /" | sudo tee /etc/apt/sources.list.d/fury-nushell.list
+sudo apt update
+sudo apt install nushell
+```
+
+Pour RedHat/Fedora et Rocky Linux :
+
+```sh
+echo "[gemfury-nushell]
+name=Gemfury Nushell Repo
+baseurl=https://yum.fury.io/nushell/
+enabled=1
+gpgcheck=0
+gpgkey=https://yum.fury.io/nushell/gpg.key" | sudo tee /etc/yum.repos.d/fury-nushell.repo
+sudo dnf install -y nushell
+```
+
+Pour Alpine Linux :
+
+```sh
+echo "https://alpine.fury.io/nushell/" | tee -a /etc/apk/repositories
+apk update
+apk add --allow-untrusted nushell
+```
 
 Installation multiplateforme :
 
-- [npm](https://www.npmjs.com/) (`npm install -g nushell` Notez que les plugins Nu ne sont pas inclus si vous installez de cette manière)
+- [npm](https://www.npmjs.com/) (`npm install -g nushell` — Notez que les plugins Nu ne sont pas inclus si vous installez de cette manière)
+
+## Images Docker
+
+Les images Docker sont disponibles depuis le GitHub Container Registry. Une image pour la dernière release est régulièrement construite pour Alpine et Debian. Vous pouvez exécuter l'image en mode interactif avec :
+
+```nu
+docker run -it --rm ghcr.io/nushell/nushell:<version>-<distro>
+```
+
+Où `<version>` est la version de Nushell à exécuter et `<distro>` est `alpine` ou la dernière release Debian supportée, par exemple `bookworm`.
+
+Pour exécuter une commande spécifique :
+
+```nu
+docker run --rm ghcr.io/nushell/nushell:latest-alpine -c "ls /usr/bin | where size > 10KiB"
+```
+
+Pour exécuter un script depuis le répertoire courant via Bash :
+
+```nu
+docker run --rm \
+    -v $(pwd):/work \
+    ghcr.io/nushell/nushell:latest-alpine \
+    "/work/script.nu"
+```
 
 ## Compiler à partir des sources
 
@@ -69,17 +137,31 @@ Vous devrez installer "libxcb", "openssl-devel" et "libX11-devel" :
 
 #### macOS
 
+##### Homebrew
+
 En utilisant [Homebrew](https://brew.sh/), vous devrez installer "openssl" et "cmake" en utilisant :
 
 @[code](@snippets/installation/macos_deps.sh)
 
-### Compiler en utilisant [crates.io](https://crates.io)
+##### Nix
 
-Les releases de Nu sont publiées sur le populaire gestionnaire de paquet de Rust [crates.io](https://crates.io/). Cela facilite la compilation et l'installation de la dernière release de Nu avec `cargo`:
+Si vous utilisez [Nix](https://nixos.org/download/#nix-install-macos) pour la gestion de paquets sur macOS, les paquets `openssl`, `cmake`, `pkg-config` et `curl` sont requis. Ils peuvent être installés :
 
-@[code](@snippets/installation/cargo_install_nu.sh)
+- Globalement, avec `nix-env --install` (et d'autres).
+- Localement, avec [Home Manager](https://github.com/nix-community/home-manager) dans votre config `home.nix`.
+- Temporairement, avec `nix-shell` (et d'autres).
 
-C'est tout ! L'outil `cargo` se chargera de télécharger les sources de Nu et de ses dépendances, de les compiler, et d'installer Nu à l'emplacement des binaires de cargo.
+### Compiler depuis [crates.io](https://crates.io) avec Cargo
+
+Les releases de Nushell sont publiées sur le populaire gestionnaire de paquets Rust [crates.io](https://crates.io/). Cela facilite la compilation et l'installation de la dernière release de Nu avec `cargo` :
+
+```nu
+cargo install nu --locked
+```
+
+L'outil `cargo` se chargera de télécharger les sources de Nu et de ses dépendances, de les compiler, et d'installer Nu à l'emplacement des binaires de cargo.
+
+Notez que les plugins par défaut doivent être installés séparément avec `cargo`. Voir la section [Installation des Plugins](./plugins.html#core-plugins) du livre pour les instructions.
 
 ### Compiler à partir du dépôt GitHub
 

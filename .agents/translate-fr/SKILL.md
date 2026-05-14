@@ -28,6 +28,7 @@ General translation and contribution rules are documented in `CONTRIBUTING.md`. 
 ## Step 1: Find outdated files
 
 As instructing in the contributing documentation, run this and read the output to see which files should be updated and/or created.
+
 ```sh
 nu tools/i18n.nu outdated fr
 ```
@@ -45,6 +46,7 @@ Update the VuePress config: add the newly created files to the sidebar, the navb
 Using the following rules, update and/or create the French translations, given the following rules.
 
 Translation rules:
+
 - Keep code blocks, commands, flags, and links unchanged.
 - All the words do not have to be translated. When a term does not have a widely used and known equivalent in French, keep the English term
 - Keep terminology consistent across pages, and use the glossary below as the source of truth for terminology consistency
@@ -78,6 +80,7 @@ release
 parsing
 toolchain
 namespace
+cookbook
 
 **Translate consistently:**
 command → commande

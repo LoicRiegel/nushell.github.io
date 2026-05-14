@@ -1,0 +1,41 @@
+# Table des matières
+
+- [Installation](installation.md) - Installation de Nushell
+- [Introduction](README.md) - Premiers pas
+- [Penser en Nu](thinking_in_nu.md) - Penser en Nushell
+- [Se déplacer](moving_around.md) - Se déplacer dans Nushell
+- [Types de données](types_of_data.md) - Types de données dans Nushell
+- [Chargement de données](loading_data.md) - Chargement et utilisation des données
+- [Chaînes](working_with_strings.md) - Chaînes, caractères d'échappement et interpolation de chaîne
+- [Travailler avec les listes](working_with_lists.md) - Travailler avec les listes Nushell
+- [Travailler avec les tableaux](working_with_tables.md) - Travailler avec les tableaux Nushell
+- [Pipelines](pipelines.md) - Comment le pipeline fonctionne
+- [Configuration](configuration.md) - Comment configurer Nushell
+- [Invites tiers](3rdpartyprompts.md) - Comment configurer les invites tiers
+- [Commandes personnalisées](custom_commands.md) - Créer vos propres commandes
+- [Alias](aliases.md) - Comment aliaser les commandes
+- [Opérateurs](operators.md) - Opérateurs supportés par Nushell
+- [Variables](variables.md) - Travailler avec les variables
+- [Contrôle de flux](control_flow.md) - Travailler avec les commandes de contrôle de flux
+- [Environnement](environment.md) - Travailler avec les variables d'environnement
+- [Stdout, stderr et codes de sortie](stdout_stderr_exit_codes.md) - Travailler avec stdout, stderr et codes de sortie
+- [Modules](modules.md) - Créer et utiliser vos propres modules
+- [Hooks](hooks.md) - Ajouter des fragments de code à exécuter automatiquement
+- [Scripts](scripts.md) - Créer vos propres scripts
+- [Métadonnées](metadata.md) - Une explication du système de métadonnées de Nushell
+- [Créer vos propres erreurs](creating_errors.md) - Créer vos propres messages d'erreur
+- [Pile de répertoires](directory_stack.md) - Travailler avec plusieurs emplacements
+- [Exécution de commandes externes (système)](./running_externals.md) - Exécution de commandes externes avec conflit de nom
+- [Plugins](plugins.md) - Améliorer Nushell avec plus de fonctionnalités en utilisant des plugins
+- [Parallélisme](parallelism.md) - Exécution de votre code en parallèle
+- [Éditeur de ligne](line_editor.md) - L'éditeur de ligne de Nushell
+- [Dataframes](dataframes.md) - Travailler avec les dataframes dans Nushell
+- [Explore](explore.md) - Utiliser l'interface utilisateur textuelle Nushell
+- [Coloration et thème](coloring_and_theming.md) - Comment modifier les couleurs et les thèmes dans Nushell
+- [Expressions régulières](regular_expressions.md) - Guide d'utilisation de regex
+- [Venir de Bash](coming_from_bash.md) - Guide pour ceux qui viennent de Bash à Nushell
+- [Carte Nushell de shells/DSL](nushell_map.md) - Guide montrant comment Nushell se compare avec SQL, LINQ, PowerShell et Bash
+- [Carte Nushell des langages impératifs](nushell_map_imperative.md) - Guide montrant comment Nushell se compare avec Python, Kotlin, C++, C# et Rust
+- [Carte Nushell des langages fonctionnels](nushell_map_functional.md) - Guide montrant comment Nushell se compare avec Clojure, Tablecloth (OCaml / Elm) et Haskell
+- [Carte des opérateurs Nushell](nushell_operator_map.md) - Guide montrant comment les opérateurs Nushell se comparent à ceux des langages de programmation d'usage général
+- [Référence de commande](/commands/) - Liste de toutes les commandes de Nushell

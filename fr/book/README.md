@@ -17,12 +17,12 @@ Vous pouvez cliquer sur les en-têtes des chapitres pour obtenir plus d'informat
 
 - [Installation](/fr/book/installation.md), sans surprise, vous aide à installer Nushell sur votre système.
 - [Prise en main](/fr/book/getting_started.md) vous guide dans vos débuts. Il explique également certains des principes de conception où Nushell diffère des shells typiques comme Bash.
-- [Fondamentaux de Nu](/book/nu_fundamentals.md) explique les concepts de base du langage Nushell.
-- [Programmer en Nu](/book/programming_in_nu.md) explore plus en profondeur les fonctionnalités du langage et montre plusieurs façons d'organiser et structurer votre code.
-- [Nu en tant que Shell](/book/nu_as_a_shell.md) se concentre sur les fonctionnalités du shell, notamment la configuration et l'environnement.
-- [Passer à Nu](/book/coming_to_nu.md) a pour but d'offrir un démarrage rapide aux utilisateurs venant d'autres shells ou langages.
-- [Notes de Conception](/book/design_notes.md) fournit une explication approfondie de certains des choix de conception de Nushell.
-- [Avancé (ou pas)](/book/advanced.md) aborde des sujets plus avancés (ils ne sont pas _si_ avancés que ça, n'hésitez pas à les consulter aussi !).
+- [Fondamentaux de Nu](/fr/book/nu_fundamentals.md) explique les concepts de base du langage Nushell.
+- [Programmer en Nu](/fr/book/programming_in_nu.md) explore plus en profondeur les fonctionnalités du langage et montre plusieurs façons d'organiser et structurer votre code.
+- [Nu en tant que Shell](/fr/book/nu_as_a_shell.md) se concentre sur les fonctionnalités du shell, notamment la configuration et l'environnement.
+- [Passer à Nu](/fr/book/coming_to_nu.md) a pour but d'offrir un démarrage rapide aux utilisateurs venant d'autres shells ou langages.
+- [Notes de Conception](/fr/book/design_notes.md) fournit une explication approfondie de certains des choix de conception de Nushell.
+- [Avancé (ou pas)](/fr/book/advanced.md) aborde des sujets plus avancés (ils ne sont pas _si_ avancés que ça, n'hésitez pas à les consulter aussi !).
 
 ## Les Nombreux Morceaux de Nushell
 
@@ -60,5 +60,5 @@ En outre, vous pouvez envisager de traduire des parties dans votre langue.
 ## Communauté
 
 L'endroit principal pour discuter de quoi que ce soit qui concerne Nushell est notre [Discord](https://discord.com/invite/NtAbbGn).
-Vous pouvez également nous suivre sur [Twitter](https://twitter.com/nu_shell) pour des news et des mises à jour.
+Vous pouvez également nous suivre sur notre [blog](https://www.nushell.sh/blog) pour des news et des mises à jour.
 Enfin, vous pouvez utiliser les discussions ou ouvrir des issues sur GitHub.

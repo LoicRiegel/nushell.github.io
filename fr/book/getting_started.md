@@ -1,3 +1,12 @@
+---
+prev:
+  text: Shell par défaut
+  link: /fr/book/default_shell.md
+next:
+  text: Visite rapide
+  link: /fr/book/quick_tour.md
+---
+
 # Prise en main
 
 Commençons ! :elephant:

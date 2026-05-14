@@ -4,13 +4,25 @@ Une caractéristique intrinsèque d'un shell est la capacité à naviguer et int
 
 ## Affichage du Contenu d'un Répertoire
 
-@[code](@snippets/moving_around/ls_example.sh)
+```nu
+ls
+```
 
-Comme vu dans d'autres chapitres, la commande [`ls`](/commands/docs/ls.md) retourne le contenu d'un répertoire. La commande `ls` de Nushell retourne les éléments sous forme de [tableau](/book/types_of_data.html#tables).
+Comme vu dans le Rapide Tour d'Horizon, la commande [`ls`](/commands/docs/ls.md) retourne le contenu d'un répertoire. La commande `ls` de Nushell retourne les éléments sous forme de [tableau](/book/types_of_data.html#tables).
 
 La commande [`ls`](/commands/docs/ls.md) accepte également un argument optionnel pour spécifier ce que vous souhaitez afficher. Par exemple, nous pouvons lister les fichiers se terminant par « .md » :
 
-@[code](@snippets/moving_around/ls_shallow_glob_example.sh)
+```nu
+ls *.md
+# => ╭───┬────────────────────┬──────┬──────────┬──────────────╮
+# => │ # │        name        │ type │   size   │   modified   │
+# => ├───┼────────────────────┼──────┼──────────┼──────────────┤
+# => │ 0 │ CODE_OF_CONDUCT.md │ file │  3.4 KiB │ 9 months ago │
+# => │ 1 │ CONTRIBUTING.md    │ file │ 11.0 KiB │ 5 months ago │
+# => │ 2 │ README.md          │ file │ 12.0 KiB │ 6 days ago   │
+# => │ 3 │ SECURITY.md        │ file │  2.6 KiB │ 2 months ago │
+# => ╰───┴────────────────────┴──────┴──────────┴──────────────╯
+```
 
 ## Patterns de Glob (wildcards)
 
@@ -111,21 +123,63 @@ Voici quelques techniques pour faire cela :
    ls $glob_pattern
    ```
 
+## Créer un Répertoire
+
+Comme dans la plupart des autres shells, la commande [`mkdir`](/commands/docs/mkdir.md) est utilisée pour créer de nouveaux répertoires. Une différence subtile est que la commande `mkdir` interne de Nushell fonctionne comme le `mkdir -p` Unix/Linux par défaut, c'est-à-dire qu'elle :
+
+- Crée automatiquement plusieurs niveaux de répertoires. Par exemple :
+
+  ```nu
+  mkdir modules/my/new_module
+  ```
+
+  Cela créera les trois répertoires même si aucun n'existe encore. Sous Linux/Unix, cela nécessite `mkdir -p`.
+
+- Ne génère pas d'erreur si le répertoire existe déjà. Par exemple :
+
+  ```nu
+  mkdir modules/my/new_module
+  mkdir modules/my/new_module
+  # => Pas d'erreur
+  ```
+
+  ::: tip
+  Une erreur courante lors de l'arrivée sur Nushell est d'essayer d'utiliser `mkdir -p <répertoire>` comme dans la version native Linux/Unix. Cela génèrera une erreur `Unknown Flag` dans Nushell.
+
+  Répétez simplement la commande sans `-p` pour obtenir le même effet.
+  :::
+
 ## Changer le Répertoire Courant
 
-@[code](@snippets/book/moving_around/cd_example.nu)
+```nu
+cd cookbook
+```
 
 Pour changer du répertoire courant vers un nouveau, utilisez la commande [`cd`](/commands/docs/cd.md).
 
-Changer le répertoire courant peut également être effectué si [`cd`](/commands/docs/cd.md) est ommis et seul un chemin est fourni :
+Changer le répertoire courant peut également être effectué si [`cd`](/commands/docs/cd.md) est omis et seul un chemin est fourni :
 
-@[code](@snippets/book/moving_around/cd_without_command_example.nu)
+```nu
+cookbook/
+```
 
-Exactement comme dans d'autres shells, vous pouvez utiliser le nom d'un répertoire, ou si vous voulez remonter d'un répertoire, vous pouvez utiliser le raccourcis `..`.
+Exactement comme dans d'autres shells, vous pouvez utiliser le nom d'un répertoire, ou si vous voulez remonter d'un répertoire, vous pouvez utiliser le raccourci `..`.
 
 Vous pouvez ajouter des points supplémentaires pour remonter de niveaux supplémentaires :
 
-@[code](@snippets/book/moving_around/multiple_cd_levels.nu)
+```nu
+# Remonter au répertoire parent
+cd ..
+# ou
+..
+# Remonter de deux niveaux (parent du parent)
+cd ...
+# ou
+...
+# Remonter de trois niveaux (parent du parent du parent)
+cd ....
+# Etc.
+```
 
 ::: tip
 Les raccourcis multi-points sont disponibles à la fois pour les commandes Nushelles, [les commandes du système de fichier](/commands/categories/filesystem.html) et les commandes externes. Par exemple, executer `^stat ....` sur un système Linux/Unix affichera que le chemin est étendu à `../../../..`
@@ -133,7 +187,9 @@ Les raccourcis multi-points sont disponibles à la fois pour les commandes Nushe
 
 Vous pouvez aussi combiner des niveaux de répertoires relatifs avec des noms de répertoires :
 
-@[code](@snippets/book/moving_around/relative_cd_levels.nu)
+```nu
+cd ../sibling
+```
 
 ::: tip CONSEIL IMPORTANT
 Changer le répertoire courant avec [`cd`](/commands/docs/cd.md) change aussi la variable d'environnement `PWD`. Cela signifie que le changement de répertoire est restreint au scope actuel (par ex. bloc ou closure). Une fois que vous êtes sortis de ce bloc, vous allez retourner au répertoire précédent. Vous pouvez en apprendre plus au chapitre [Environnement](/book/environment.md).
@@ -145,14 +201,13 @@ Nu met également à disposition des commandes basiques de [système de fichiers
 
 - [`mv`](/commands/docs/mv.md) pour renommer ou déplacer un fichier ou répertoire vers un nouvel emplacement
 - [`cp`](/commands/docs/cp.md) pour copier un élément vers un nouvel emplacement
-- [`rm`](/commands/docs/rm.md) pour supprimer des éléments du système de fichier
-- [`mkdir`](/commands/docs/mkdir.md) pour créer un nouveau répertoire
+- [`rm`](/commands/docs/rm.md) pour supprimer des éléments du système de fichiers
 
 ::: tip NOTE
 Sous Bash et de nombreux autres shells, la plupart des commandes de système de fichiers (excepté `cd`) sont en fait des binaires séparés dans le système. Par exemple, sur un système Linux, `cp` est le binaire `/usr/bin/cp`. Dans Nushell, ces commandes sont intégrées. Cela a plusieurs avantages :
 
-- Elles fonctionnent de manière cohérente sur les platefoems où une version binaire n'est peut-être pas disponible (par ex. Windows). Cela permet la création de scripts, modules ou commandes personnalisées cross-platform.
-- Elles sont intégrées plus étroitement avec Nushell, leur donnant la possibilité de comprendres les types et constructions de Nushell
-- Comme mentionné dans le [Rapide Tour d'Horizon](quick_tour.html), elles sont documentées dans le système d'aide de Nushell. Executer `help <command>` ou `<command> --help` affichera la documentation Nushell pour ces commandes.
+- Elles fonctionnent de manière cohérente sur les plateformes où une version binaire n'est peut-être pas disponible (par ex. Windows). Cela permet la création de scripts, modules ou commandes personnalisées multiplateformes.
+- Elles sont intégrées plus étroitement avec Nushell, leur permettant de comprendre les types et constructions de Nushell.
+- Comme mentionné dans le [Rapide Tour d'Horizon](quick_tour.html), elles sont documentées dans le système d'aide de Nushell. Exécuter `help <command>` ou `<command> --help` affichera la documentation Nushell pour ces commandes.
 
-Bien que l'utilisation des versions intégrées à Nushell soit typiquement recommandé, il est possible d'accéder aux binaires Linux. Lisez [S'échapper vers le système](/book/escaping.html#escaping-to-the-system) pour les détails.
+Bien que l'utilisation des versions intégrées à Nushell soit généralement recommandée, il est possible d'accéder aux binaires Linux. Lisez [Exécuter des Commandes Système](./running_externals.md) pour les détails.

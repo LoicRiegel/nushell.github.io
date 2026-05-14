@@ -1,3 +1,9 @@
+---
+next:
+  text: Fondamentaux de Nu
+  link: /fr/book/nu_fundamentals.md
+---
+
 # Cheat Sheet Nushell
 
 ## Types de donnée
@@ -430,7 +436,7 @@ les closures et définitions imbriquées ne peuvent pas capturer des variables m
 mut x = 0
 [1 2 3] | each { $x += 1 }
 # => Error: nu::parser::expected_keyword
-# => 
+# =>
 # =>   × Capture of mutable variable.
 # =>    ╭─[entry #83:1:18]
 # =>  1 │ [1 2 3] | each { $x += 1 }

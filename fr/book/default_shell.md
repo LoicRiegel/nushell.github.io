@@ -1,3 +1,12 @@
+---
+prev:
+  text: Installer Nu
+  link: /fr/book/installation.md
+next:
+  text: Prise en main
+  link: /fr/book/getting_started.md
+---
+
 # Shell par défaut
 
 ## Définir Nu comme shell par défaut sur votre terminal
@@ -16,9 +25,9 @@
 ## Définir Nu comme shell de connexion (Linux, BSD & macOS)
 
 ::: warning
-Nu est encore en développement et n'est pas destiné à être compatible POSIX.
-Soyez conscient que certains programmes sur votre système peuvent supposer que votre shell de connexion est compatible [POSIX](https://fr.wikipedia.org/wiki/POSIX).
-Briser cette supposition peut entraîner des problèmes inattendus.
+Nu n'est pas destiné à être compatible POSIX.
+Soyez conscient que certains programmes sur votre système (ou leur documentation) peuvent supposer que votre shell de connexion est compatible [POSIX](https://fr.wikipedia.org/wiki/POSIX).
+Briser cette supposition peut entraîner des problèmes inattendus. Consultez [Configuration - Shell de connexion](./configuration.md#configuring-nu-as-a-login-shell) pour plus de détails.
 :::
 
 Pour définir le shell de connexion, vous pouvez utiliser la commande [`chsh`](https://linux.die.net/man/1/chsh).

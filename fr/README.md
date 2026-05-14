@@ -18,7 +18,7 @@ features:
 
 ### Nu fonctionne avec les données existantes
 
-Nu parle [JSON, YAML, SQLite, Excel, et plus](/book/loading_data.html), prêt à l'emploi. Il est facile d'injecter des données dans un pipeline Nu, qu'elles proviennent d'un fichier, d'une base de donnée, ou d'une API web :
+Nu parle [JSON, YAML, SQLite, Excel, et plus](/fr/book/loading_data.html), prêt à l'emploi. Il est facile d'injecter des données dans un pipeline Nu, qu'elles proviennent d'un fichier, d'une base de donnée, ou d'une API web :
 
 <img src="https://www.nushell.sh/frontpage/fetch-example.png" alt="Capture montrant un fetch avec une API web" class="hero"/>
 
@@ -48,11 +48,22 @@ $ nix profile install nixpkgs#nushell
 
 #### Windows :
 
-```shell
-$ winget install nushell
+```powershell
+# Installation dans le scope utilisateur (par défaut).
+winget install nushell
+# Installation dans le scope système (lancer en admin).
+winget install nushell --scope machine
 ```
 
 Après l'installation, lancez Nu en tapant `nu`.
+
+## Documentation
+
+- [Prise en main](/fr/book/getting_started.html) vous guide pour vous familiariser avec Nushell
+- [Passer à Nu](/fr/book/coming_to_nu.html) décrit les similitudes et différences avec d'autres langages et shells
+- [Fondamentaux de Nu](/fr/book/nu_fundamentals.html) est une description plus détaillée et structurée des fondamentaux
+- [Programmer en Nu](/fr/book/programming_in_nu.html) décrit Nu en tant que langage de programmation
+- [Nu en tant que Shell](/fr/book/nu_as_a_shell.html) vous donne un aperçu des fonctionnalités interactives et de la configurabilité dans un environnement shell
 
 ## Communauté
 
