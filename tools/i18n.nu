@@ -17,7 +17,7 @@ def 'has-ref' [
 # Update issue contents for https://github.com/nushell/nushell.github.io/issues/261
 def update-i18n-status [] {
 
-    print "The following table holds the overview of the Nushell docs’ writing and translation status. We welcome translations and translation updates. When making changes please keep the `i18n-meta.json` file up-to-date."
+    print "The following table holds the overview of the Nushell docs' writing and translation status. We welcome translations and translation updates. When making changes please keep the `i18n-meta.json` file up-to-date."
     print $'(char nl)---(char nl)'
 
     let status = (
@@ -32,6 +32,7 @@ def update-i18n-status [] {
             | upsert es {|elt| get-cell $elt.name es }
             | upsert pt-BR {|elt| get-cell $elt.name pt-BR }
             | upsert ru {|elt| get-cell $elt.name ru }
+            | upsert fr {|elt| get-cell $elt.name fr }
             | to md --pretty
     )
     print $status
@@ -78,6 +79,7 @@ def gen-i18n-meta [] {
         | upsert en {|elt| get-cell $elt.name en }
         | upsert zh-CN {|elt| get-cell $elt.name zh-CN }
         | upsert de {|elt| get-cell $elt.name de }
+        | upsert fr {|elt| get-cell $elt.name fr }
         | upsert tr {|elt| get-cell $elt.name tr }
         | upsert ja {|elt| get-cell $elt.name ja }
         | upsert es {|elt| get-cell $elt.name es }
@@ -127,7 +129,7 @@ def main [
     task: string    # Available task: `gen`, `update`, `outdated`
     lng?: string    # The locale to check outdated: zh-CN, de, etc.
 ] {
-    let locales = ['zh-cn', 'de', 'tr', 'ja', 'es', 'pt-br', 'ru']
+    let locales = ['zh-cn', 'de', 'tr', 'ja', 'es', 'pt-br', 'ru', 'fr']
     match $task {
         'gen' => { gen-i18n-meta },
         'update' => { update-i18n-status },
